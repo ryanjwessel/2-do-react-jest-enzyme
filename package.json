@@ -1,7 +1,7 @@
 {
-  "name": "todo-react-redux",
+  "name": "2-do-react-jest",
   "version": "1.0.0",
-  "description": "A simple TODO application built using React and Redux",
+  "description": "2-DO is a simple TODO application built using React for the UI and Jest for testing",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open --hot --config webpack.dev.js",
@@ -10,27 +10,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rynjwssl/todo-react-redux.git"
+    "url": "git+https://github.com/rynjwssl/2-do-react-jest.git"
   },
   "keywords": [
     "todo",
     "react",
-    "redux"
+    "jest"
   ],
   "author": "Ryan Wessel",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rynjwssl/todo-react-redux/issues"
+    "url": "https://github.com/rynjwssl/2-do-react-jest/issues"
   },
-  "homepage": "https://github.com/rynjwssl/todo-react-redux#readme",
+  "homepage": "https://github.com/rynjwssl/2-do-react-jest#readme",
   "dependencies": {
     "ajv": "^6.5.3",
     "npm": "^6.4.1",
     "react": "^16.5.1",
-    "react-dom": "^16.5.1",
-    "react-redux": "^5.0.7",
-    "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0"
+    "react-dom": "^16.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.1",

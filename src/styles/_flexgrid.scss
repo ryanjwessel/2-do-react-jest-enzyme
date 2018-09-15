@@ -1,0 +1,168 @@
+/* Minimal grid system in SCSS adapted from https://github.com/kristoferjoseph/flexboxgrid /*
+
+/* Custom breakpoints */
+$phone-max: 480px;
+$tablet-min: 768px;
+$desktop-min: 992px;
+$lg-desktop: 1200px;
+
+.container-fluid {
+	padding-right: 15px;
+	padding-left: 15px;
+
+	&.container {
+		margin-right: auto;
+		margin-left: auto;
+		max-width: 100rem;
+	}
+}
+
+.row {
+	box-sizing: border-box;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-flex: 0;
+	-ms-flex: 0 1 auto;
+	flex: 0 1 auto;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-right: -10px;
+	margin-left: -10px;
+
+	&.reverse {
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: reverse;
+		-ms-flex-direction: row-reverse;
+		flex-direction: row-reverse;
+	}
+}
+
+.col.reverse {
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: reverse;
+	-ms-flex-direction: column-reverse;
+	flex-direction: column-reverse;
+}
+
+@mixin col-config($size) {
+	[class^='col-#{$size}'], [class*=' col-#{$size}'] {
+		display: block;
+		-webkit-box-flex: 1;
+		-ms-flex-positive: 1;
+		flex-grow: 1;
+		-ms-flex-preferred-size: 0;
+		flex-basis: 0;
+		max-width: 100%;
+	}
+
+	.col-#{$size}-hidden {
+		display: none;
+	}
+}
+
+@mixin col-sizing($size) {
+	@for $i from 1 through 12 {
+		$width: percentage($i / 12);
+
+		.col-#{$size}-#{$i} {
+			-ms-flex-preferred-size: $width;
+			flex-basis: $width;
+			max-width: $width;
+		}
+	}
+}
+
+@mixin offset-sizing($size) {
+	@for $i from 0 through 11 {
+		$width: percentage($i / 12);
+
+		.col-#{$size}-offset-#{$i} {
+			margin-left: $width;
+		}
+	}
+}
+
+@mixin col-distribution($size) {
+	.start-#{$size} {
+		-webkit-box-pack: start;
+		-ms-flex-pack: start;
+		justify-content: flex-start;
+		text-align: start;
+	}
+	.center-#{$size} {
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+		text-align: center;
+	}
+	.end-#{$size} {
+		-webkit-box-pack: end;
+		-ms-flex-pack: end;
+		justify-content: flex-end;
+		text-align: end;
+	}
+	.top-#{$size} {
+		-webkit-box-align: start;
+		-ms-flex-align: start;
+		align-items: flex-start;
+	}
+	.middle-#{$size} {
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+	.bottom-#{$size} {
+		-webkit-box-align: end;
+		-ms-flex-align: end;
+		align-items: flex-end;
+	}
+	.around-#{$size} {
+		-ms-flex-pack: distribute;
+		justify-content: space-around;
+	}
+	.between-#{$size} {
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+	}
+}
+
+[class^='col-'], [class*=' col-'] {
+	box-sizing: border-box;
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 auto;
+	flex: 0 0 auto;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+@include col-config('xs');
+@include col-sizing('xs');
+@include offset-sizing('xs');
+@include col-distribution('xs');
+
+@media only screen and (min-width: $tablet-min) {
+	@include col-config('sm');
+	@include col-sizing('sm');
+	@include offset-sizing('sm');
+	@include col-distribution('sm');
+}
+
+@media only screen and (min-width: $desktop-min) {
+	@include col-config('md');
+	@include col-sizing('md');
+	@include offset-sizing('md');
+	@include col-distribution('md');
+}
+
+@media only screen and (min-width: $lg-desktop) {
+	@include col-config('lg');
+	@include col-sizing('lg');
+	@include offset-sizing('lg');
+	@include col-distribution('lg');
+}
