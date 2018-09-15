@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Task component renders the task correctly 1`] = `
+<div
+  className="task  task-1"
+>
+  <p
+    className="toggle-task"
+    onClick={[Function]}
+  >
+    Sample Task
+  </p>
+  <a
+    className="delete-task"
+    href="#"
+    onClick={[Function]}
+  >
+    Delete
+  </a>
+</div>
+`;
