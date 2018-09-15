@@ -21,9 +21,17 @@ body {
 	max-width: 50rem;
 }
 
-button, input {
+button, input, textarea {
 	width: 100%;
 	padding: 0.5rem 1rem;
+}
+
+textarea {
+	border-top: 1px solid #ccc;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
+	min-height: 10rem;
 }
 
 button {
@@ -56,6 +64,11 @@ a {
 
 .toggle-task {
 	word-wrap: break-word;
+}
+
+.task-description {
+	font-style: italic;
+	font-size: 1.4rem;
 }
 
 .done-task {

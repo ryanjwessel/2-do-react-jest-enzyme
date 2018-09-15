@@ -11,7 +11,7 @@ import {
 
 // COMPONENTS
 import Nav from './components/Nav.jsx';
-import AddTask from './components/AddTask.jsx';
+import TaskEditor from './components/TaskEditor.jsx';
 import TaskList from './components/TaskList.jsx';
 
 // STYLES
@@ -54,7 +54,10 @@ class App extends Component {
 
 					<Route exact path="/" render={() => {
 						return (
-							<AddTask handleNewTask={ (task) => this.addTask(task) } />
+							<TaskEditor
+								actionLabel="Add"
+								handleNewTask={ (task) => this.addTask(task) }
+							/>
 						);
 					} } />
 					<Route path="/tasks" render={() => {
