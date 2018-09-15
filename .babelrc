@@ -1,0 +1,18 @@
+{
+	"presets": [
+		"@babel/react",
+		["@babel/env", {
+			"targets": {
+				"browsers": "> 2%"
+			},
+			"include": ["transform-es2015-arrow-functions", "es6.map"]
+		}]
+	],
+	"plugins": [
+		["@babel/plugin-proposal-decorators", { "legacy": true }],
+		"@babel/plugin-proposal-function-sent",
+		"@babel/plugin-proposal-export-namespace-from",
+		"@babel/plugin-proposal-numeric-separator",
+		"@babel/plugin-proposal-throw-expressions"
+	]
+}
