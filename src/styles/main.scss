@@ -38,8 +38,36 @@ button {
 	&.delete-task {
 		background-color: #f5001d;
 	}
+
+	&.edit-task {
+		color: #323a40;
+	}
+}
+
+a {
+	color: #aaa;
+	text-decoration: none;
+
+	&.active {
+		color: #fff;
+		text-decoration: underline;
+	}
 }
 
 .toggle-task {
 	word-wrap: break-word;
+}
+
+.done-task {
+	color: #aaa;
+	text-decoration: line-through;
+}
+
+.filter-tasks {
+	color: #aaa;
+
+	&.active-filter {
+		background-color: #00cd58;
+		color: #fff;
+	}
 }

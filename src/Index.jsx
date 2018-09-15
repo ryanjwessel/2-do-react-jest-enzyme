@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { HashRouter, Route, Switch, Link, withRouter } from 'react-router-dom';
 
 // STATE METHODS
 import {
@@ -9,8 +10,9 @@ import {
 } from './state';
 
 // COMPONENTS
+import Nav from './components/Nav.jsx';
 import AddTask from './components/AddTask.jsx';
-import Task from './components/Task.jsx';
+import TaskList from './components/TaskList.jsx';
 
 // STYLES
 import './styles/main.scss';
@@ -38,33 +40,35 @@ class App extends Component {
 		this.setState(deleteTask(this.state, id));
 	}
 
-	renderTasks() {
-		return this.state.tasks.map((task) => {
-			return (
-				<Task
-					key={task.id}
-					task={task}
-					finishTask={(id) => this.toggleCompletion(id)}
-					deleteTask={(id) => this.deleteTask(id)}
-				/>
-			);
-		});
-	}
-
 	render() {
-		return(
-			<div className="container-fluid container">
-				<div className="row center-xs">
-					<div className="col-xs-12">
-						<h1>2-DO</h1>
+		return (
+			<HashRouter>
+				<div className="container-fluid container">
+					<div className="row center-xs">
+						<div className="col-xs-12">
+							<h1>2-DO</h1>
+						</div>
 					</div>
+					<Nav />
+					<hr />
+
+					<Route exact path="/" render={() => {
+						return (
+							<AddTask handleNewTask={ (task) => this.addTask(task) } />
+						);
+					} } />
+					<Route path="/tasks" render={() => {
+						return (
+							<TaskList
+								tasks={ this.state.tasks }
+								finishTask={ (id) => this.toggleCompletion(id) }
+								deleteTask={ (id) => this.deleteTask(id) }
+							/>
+						);
+					} } />
+
 				</div>
-				<AddTask handleNewTask={ (task) => this.addTask(task) } />
-				<hr />
-				<div className="row task-list">
-					{ this.renderTasks() }
-				</div>
-			</div>
+			</HashRouter>
 		);
 	}
 }
