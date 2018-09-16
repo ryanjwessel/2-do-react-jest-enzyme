@@ -14,9 +14,9 @@ export function toggleCompletion(state, id) {
 	return tasksObject;
 }
 
-export function addTask(state, task) {
+export function addTask(state, task, definedId = null) {
 	const newTask = Object.assign({}, task, {
-		id: shortid.generate(),
+		id: (definedId) ? definedId : shortid.generate(),
 		done: false,
 	});
 	

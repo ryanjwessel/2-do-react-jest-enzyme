@@ -48,7 +48,7 @@ class TaskList extends Component {
 									<div key={ label } className="col-xs-4">
 										<button
 											type="button"
-											className={`filter-tasks ${(this.state.filter === label) ? 'active-filter' :'' }`}
+											className={`filter-tasks ${(this.state.filter === label) ? 'active-filter' : '' }`}
 											onClick={ () => {
 												this.updateFilter(label);
 											} }

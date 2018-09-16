@@ -2,20 +2,47 @@
 
 exports[`Task component renders the task correctly 1`] = `
 <div
-  className="task  task-1"
+  className="col-xs-12 task task-1"
 >
-  <p
-    className="toggle-task"
-    onClick={[Function]}
+  <div
+    className="row middle-xs between-xs"
   >
-    Sample Task
-  </p>
-  <a
-    className="delete-task"
-    href="#"
-    onClick={[Function]}
+    <div
+      className="col-xs-7 col-sm-9"
+    >
+      <p
+        className="toggle-task"
+        onClick={[Function]}
+      >
+        Sample Task
+      </p>
+      <p
+        className="task-description"
+      />
+    </div>
+    <div
+      className="col-xs-5 col-sm-3"
+    >
+      <button
+        className="edit-task"
+        onClick={[Function]}
+        type="button"
+      >
+        Edit
+      </button>
+      <button
+        className="delete-task"
+        onClick={[Function]}
+        type="button"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+  <div
+    className="col-xs-12"
   >
-    Delete
-  </a>
+    <hr />
+  </div>
 </div>
 `;
