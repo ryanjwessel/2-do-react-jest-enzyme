@@ -9,7 +9,9 @@ export function toggleCompletion(state, id) {
 		return task;
 	});
 
-	return { tasks };
+	const tasksObject = { tasks };
+	localStorage.setItem( 'state', JSON.stringify(tasksObject) );
+	return tasksObject;
 }
 
 export function addTask(state, task) {
@@ -18,16 +20,40 @@ export function addTask(state, task) {
 		done: false,
 	});
 	
-	return {
+	const tasksObject = {
 		tasks: [
 			...state.tasks,
 			newTask,
 		]
 	};
+	localStorage.setItem( 'state', JSON.stringify(tasksObject) );
+	return tasksObject;
+}
+
+export function updateTask(state, task) {
+	const tasksObject = {
+		tasks: state.tasks.map( (item) => {
+			// This is not a match, so return the task as is.
+			if(item.id !== task.id) {
+				return item;
+			}
+
+			// This is a match, return the updated value.
+			return {
+				...item,
+				name: task.name,
+				description: task.description,
+			};
+		} )
+	};
+	localStorage.setItem( 'state', JSON.stringify(tasksObject) );
+	return tasksObject;
 }
 
 export function deleteTask(state, id) {
-	return {
+	const tasksObject = {
 		tasks: state.tasks.filter((task) => task.id !== id)
 	};
+	localStorage.setItem( 'state', JSON.stringify(tasksObject) );
+	return tasksObject;
 }
