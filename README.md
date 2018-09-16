@@ -4,7 +4,11 @@ This is a simple todo application built using React, Jest, and Enzyme (among oth
 
 ## Thinking behind this project
 
-Normally, I use Redux for the state management portion of my React apps. This time, I wanted to create an example of an application that includes unit testing in the build process by leveraging Jest and Enzyme, but also one that manages the state of the application through deliberate use of internal component state and pure functions.
+Normally, I use Redux for the state management portion of my React apps.
+
+This time, I wanted to create an example of an application that includes unit testing in the build process by leveraging Jest and Enzyme, but also one that manages the state of the application through deliberate use of internal component state and pure functions.
+
+Fortunately, it was still relatively simple to persist the application state after a page-refresh by using localStorage.
 
 ## Getting Started
 
@@ -14,4 +18,4 @@ To initiate testing of the application, run `npm test`.
 
 To fire up the dev server, run `npm start`.
 
-To build production files, run `npm build`. This will run `npm test` first, and only build the files if all tests pass.
+To build production files, run `npm run build`. This will run `npm test` first, and only build the files if all tests pass.
