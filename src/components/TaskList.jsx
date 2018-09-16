@@ -72,6 +72,7 @@ class TaskList extends Component {
 											key={task.id}
 											task={task}
 											finishTask={(id) => this.props.finishTask(id)}
+											updateTask={(id) => this.props.updateTask(id)}
 											deleteTask={(id) => this.props.deleteTask(id)}
 										/>
 									);

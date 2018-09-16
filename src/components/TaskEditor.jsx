@@ -10,15 +10,35 @@ export default class TaskEditor extends Component {
 		};
 	}
 
+	componentDidMount() {
+		if(this.props.task) {
+			const { name, description } = this.props.task;
+		
+			if(name) {
+				this.setState( {
+					name,
+					description: (description) ? description : '',
+				} );
+			}
+		}
+	}
+
 	onChange( field, event ) {
 		this.setState( { [ field ]: event.target.value } );
 	}
 
-	addTask() {
+	handleTaskChange() {
 		const taskName = this.state.name;
 		const taskDescription = this.state.description;
 
-		if(taskName) {
+		// If there is an ID, then this is an updating action.
+		if(this.props.task) {
+			this.props.handleNewTask( {
+				name: taskName,
+				description: taskDescription,
+				id: this.props.task.id,
+			} );
+		} else if(taskName) { // Otherwise, this is from the adding form. If there is a name in the field, then dispatch the action and clear the fields.
 			this.props.handleNewTask( {
 				name: taskName,
 				description: taskDescription,
@@ -54,9 +74,9 @@ export default class TaskEditor extends Component {
 					<button
 						type="button"
 						className="add-task"
-						onClick={ () => this.addTask() }
+						onClick={ () => this.handleTaskChange() }
 					>
-						Add 2-DO
+						{ this.props.actionLabel } 2-DO
 					</button>
 				</div>
 			</div>

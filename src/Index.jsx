@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { HashRouter, Route, Switch, Link, withRouter } from 'react-router-dom';
 
 // STATE METHODS
 import {
 	toggleCompletion,
 	addTask,
+	updateTask,
 	deleteTask,
 } from './state';
 
 // COMPONENTS
-import Nav from './components/Nav.jsx';
 import TaskEditor from './components/TaskEditor.jsx';
 import TaskList from './components/TaskList.jsx';
 
@@ -21,11 +20,15 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			tasks: [],
-		};
+		// Parse the tasks stored in localStorage. If there are any use that as the App state, otherwise return an empty array for tasks.
+		const persistedState = JSON.parse(localStorage.getItem('state'));
+		const constructorState = (persistedState) ? persistedState : { tasks: [] };
+		this.state = constructorState;
 
+		this.toggleCompletion = this.toggleCompletion.bind(this);
 		this.addTask = this.addTask.bind(this);
+		this.updateTask = this.updateTask.bind(this);
+		this.deleteTask = this.deleteTask.bind(this);
 	}
 
 	toggleCompletion(id) {
@@ -36,42 +39,34 @@ class App extends Component {
 		this.setState(addTask(this.state, task));
 	}
 
+	updateTask(task) {
+		this.setState(updateTask(this.state, task));
+	}
+
 	deleteTask(id) {
 		this.setState(deleteTask(this.state, id));
 	}
 
 	render() {
 		return (
-			<HashRouter>
-				<div className="container-fluid container">
-					<div className="row center-xs">
-						<div className="col-xs-12">
-							<h1>2-DO</h1>
-						</div>
+			<div className="container-fluid container">
+				<div className="row center-xs">
+					<div className="col-xs-12">
+						<h1>2-DO</h1>
 					</div>
-					<Nav />
-					<hr />
-
-					<Route exact path="/" render={() => {
-						return (
-							<TaskEditor
-								actionLabel="Add"
-								handleNewTask={ (task) => this.addTask(task) }
-							/>
-						);
-					} } />
-					<Route path="/tasks" render={() => {
-						return (
-							<TaskList
-								tasks={ this.state.tasks }
-								finishTask={ (id) => this.toggleCompletion(id) }
-								deleteTask={ (id) => this.deleteTask(id) }
-							/>
-						);
-					} } />
-
 				</div>
-			</HashRouter>
+				<hr />
+				<TaskEditor
+					actionLabel="Add"
+					handleNewTask={ (task) => this.addTask(task) }
+				/>
+				<TaskList
+					tasks={ this.state.tasks }
+					updateTask={ (task) => this.updateTask(task) }
+					finishTask={ (id) => this.toggleCompletion(id) }
+					deleteTask={ (id) => this.deleteTask(id) }
+				/>
+			</div>
 		);
 	}
 }
