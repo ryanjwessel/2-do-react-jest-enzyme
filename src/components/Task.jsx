@@ -51,7 +51,20 @@ class Task extends React.Component {
 				{ !this.state.editable ? (
 					<div className="row middle-xs between-xs">
 						<div className="col-xs-7 col-sm-9">
-							<p className="toggle-task" onClick={() => this.toggleDone() }>{ task.name }</p>
+							<button
+								type="button"
+								className={`toggle-btn ${(!this.props.task.done) ? 'add' : 'remove'}`}
+								onClick={() => this.toggleDone() }
+							>
+								{ (!this.props.task.done) ? (
+									String.fromCharCode(10003)
+								) : (
+									String.fromCharCode(8634)
+								) }
+							</button>
+							<span className="toggle-task">
+								{ task.name }
+							</span>
 							<p className="task-description">{ task.description }</p>
 						</div>
 						<div className="col-xs-5 col-sm-3">

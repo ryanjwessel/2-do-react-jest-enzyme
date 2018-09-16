@@ -10,12 +10,18 @@ exports[`Task component renders the task correctly 1`] = `
     <div
       className="col-xs-7 col-sm-9"
     >
-      <p
-        className="toggle-task"
+      <button
+        className="toggle-btn add"
         onClick={[Function]}
+        type="button"
+      >
+        ✓
+      </button>
+      <span
+        className="toggle-task"
       >
         Sample Task
-      </p>
+      </span>
       <p
         className="task-description"
       />

@@ -12,7 +12,7 @@ test('TaskComponent calls finishTask when task is clicked', () => {
 		<Task task={task} finishTask={finishTask} />
 	);
 
-	const button = wrapper.find('.toggle-task');
+	const button = wrapper.find('.toggle-btn');
 	button.simulate('click');
 	expect(finishTask).toBeCalledWith(1);
 });

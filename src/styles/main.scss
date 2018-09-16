@@ -62,6 +62,32 @@ a {
 	}
 }
 
+.toggle-btn {
+	width: 4.4rem;
+	height: 4.4rem;
+	border-radius: 2.2rem;
+	margin: 0 1rem 0.5rem 0;
+	color: #aaa;
+
+	&.add {
+		background-color: #00b94e;
+		color: #fff;
+
+		&:hover {
+			background-color: #009940;
+		}
+	}
+
+	&.remove {
+		background-color: #f7001d;
+		color: #fff;
+
+		&:hover {
+			background-color: #cc0018;
+		}
+	}
+}
+
 .toggle-task {
 	word-wrap: break-word;
 }
