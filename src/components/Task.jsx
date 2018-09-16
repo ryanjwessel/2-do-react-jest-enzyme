@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 const classNames = require('classnames');
 
 // COMPONENTS
 import TaskEditor from './TaskEditor.jsx';
 
-export default class Task extends React.Component {
+class Task extends React.Component {
 	constructor(props) {
 		super(props);
 		
@@ -74,3 +75,12 @@ export default class Task extends React.Component {
 		);
 	}
 }
+
+Task.propTypes = {
+	updateTask: PropTypes.func,
+	finishTask: PropTypes.func,
+	deleteTask: PropTypes.func,
+	task: PropTypes.object,
+};
+
+export default Task;

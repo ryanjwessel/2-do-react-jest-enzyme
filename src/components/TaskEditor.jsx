@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-export default class TaskEditor extends Component {
+class TaskEditor extends Component {
 	constructor(props) {
 		super(props);
 
@@ -83,3 +84,11 @@ export default class TaskEditor extends Component {
 		);
 	}
 }
+
+TaskEditor.propTypes = {
+	task: PropTypes.object,
+	handleNewTask: PropTypes.func,
+	actionLabel: PropTypes.string,
+};
+
+export default TaskEditor;

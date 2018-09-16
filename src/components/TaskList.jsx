@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 // COMPONENTS
 import Task from './Task.jsx';
@@ -85,5 +86,12 @@ class TaskList extends Component {
 		);
 	}
 }
+
+TaskList.propTypes = {
+	updateTask: PropTypes.func,
+	finishTask: PropTypes.func,
+	deleteTask: PropTypes.func,
+	tasks: PropTypes.array,
+};
 
 export default TaskList;
